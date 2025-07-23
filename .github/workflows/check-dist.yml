@@ -51,3 +51,25 @@ jobs:
         with:
           name: dist
           path: dist/
+
+      - uses: Mayu-mic/google-apps-script-action@v2
+        with:
+          clasprc: ${{ secrets.CLASPRC_JSON }}
+          scriptId: ${{ secrets.SCRIPT_ID }}
+          command: 'push'
+      
+      - uses: Mayu-mic/google-apps-script-action@v2
+        with:
+          clasprc: ${{ secrets.CLASPRC_JSON }}
+          scriptId: ${{ secrets.SCRIPT_ID }}
+          command: 'deploy'
+          deploymentId: ${{ secrets.DEPLOYMENT_ID }}
+          description: 'Deployment description'
+      
+      - uses: Mayu-mic/google-apps-script-action@v2
+        with:
+          clasprc: ${{ secrets.CLASPRC_JSON }}
+          scriptId: ${{ secrets.SCRIPT_ID }}
+          command: 'version'
+          sourceRootDir: 'src'
+          description: 'Update features'
